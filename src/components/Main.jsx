@@ -1,6 +1,11 @@
 import { useState } from "react"
 
+//axios
+import axios from 'axios';
+
 export default function Main() {
+
+    const endpoint = 'https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts';
 
     const resetPost = {
 
@@ -36,8 +41,19 @@ export default function Main() {
 
         setPostsList(addPost);
         setPost(resetPost);
-    }
 
+        axios.post(endpoint, addPost)
+            .then(res => {
+                
+                const currentPost = (Object.keys(res.data).length) - 6;
+
+                console.log(res.data[currentPost]);
+
+                return
+            })
+            .catch(err => console.log(err));
+    }
+    
     console.log('New post');
     console.log(post);
 
