@@ -35,6 +35,7 @@ export default function Main() {
         const addPost = [...postsList, post];
 
         setPostsList(addPost);
+        setPost(resetPost);
     }
 
     console.log('New post');
@@ -47,22 +48,22 @@ export default function Main() {
         <form onSubmit={addPost}>
 
             <label htmlFor="author-post">Author Name</label>
-            <input type="text" name="nameAuthor" id="author-post" onChange={newPost} placeholder="Insert author name"/>
+            <input type="text" name="nameAuthor" id="author-post" value={post.nameAuthor} onChange={newPost} placeholder="Insert author name"/>
 
             <hr />
 
             <label htmlFor="title-post">Post Title</label>
-            <input type="text" name="title" id="title-post" onChange={newPost} placeholder="Insert post title"/>
+            <input type="text" name="title" id="title-post" value={post.title} onChange={newPost} placeholder="Insert post title"/>
 
             <hr />
 
             <label htmlFor="content-post">Post Content</label>
-            <textarea name="content" id="content-post" onChange={newPost} placeholder="Insert post content ..."/>
+            <textarea name="content" id="content-post" value={post.content} onChange={newPost} placeholder="Insert post content ..."/>
 
             <hr />
 
             <label htmlFor="visibility-post">Select for private post</label>
-            <input name="visibility" id="visibility-post" onChange={newPost} type="checkbox" />
+            <input name="visibility" id="visibility-post" checked={post.visibility} onChange={newPost} type="checkbox" />
 
             <hr />
 
