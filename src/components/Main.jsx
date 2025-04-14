@@ -15,13 +15,15 @@ export default function Main() {
 
     function newPost(e) {
 
+        const valueInput = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
         setPost(post => {
 
             console.log('Something changed');
 
             return {
                 ...post,
-                [e.target.name]: e.target.value
+                [e.target.name]: valueInput
             }
         });
     };
